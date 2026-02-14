@@ -1,0 +1,44 @@
+.new-note-dialog {
+    width: 40%;
+    height: 15rem;
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.new-note-content {
+    display : grid;
+    grid-template-rows: 20% 55% 25%;
+    height: 100%;
+
+}
+
+.new-note-header {
+    background-color: var(--dialog-header-background-color);
+    text-align: center;
+}
+
+.new-note-body{
+    display: grid;
+    margin: 1rem;
+    grid-template-columns: 30% 70%;
+    gap : 0.2rem;
+    
+}
+
+.new-note-form-item {
+    width: 100%;
+    margin-left: 10%;
+    margin-bottom: 1rem;
+}
+
+.new-note-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--dialog-header-background-color);
+    border-radius: 0.3rem;
+    min-height: 100%;
+}
