@@ -9,7 +9,6 @@ interface NotesListProps {
 }
 
 export default function NotesList({ notes, handleNoteClick, onNoteSaved }: NotesListProps) {
-
     return (
         <>
             <CreateNote onNoteSaved={onNoteSaved} />
