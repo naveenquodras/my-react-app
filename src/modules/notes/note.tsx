@@ -15,7 +15,7 @@ export function Note({ note, handleNoteClick }:  NoteProps ) {
     }
     return (
         <div className="note" onClick={handleClick}>
-            <h5> {note.title}</h5>
+            <h5> {note.id}. {note.title}</h5>
             <div>{note.details}</div>
         </div>
     );

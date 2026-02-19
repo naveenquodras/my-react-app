@@ -5,11 +5,11 @@ import './notes.css';
 
 const API_BASE = 'http://localhost:3001';
 
-interface CreateNoteProps {
+interface NoteEditorProps {
     onNoteSaved?: () => void;
 }
 
-export default function CreateNote({ onNoteSaved }: CreateNoteProps) {
+export default function NoteEditor({ onNoteSaved }: NoteEditorProps) {
     const [note, setNote] = useState<INote>({id:-1, title:'', details:''});
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
@@ -28,8 +28,10 @@ export default function CreateNote({ onNoteSaved }: CreateNoteProps) {
         const title = titleRef.current?.value ?? '';
         const details = detailsRef.current?.value ?? '';
         try {
-            const res = await fetch(`${API_BASE}/api/notes`, {
-                method: 'POST',
+            const method = note.id > 0 ? 'PUT' : 'POST';
+            const url = note.id > 0 ? `${API_BASE}/api/notes/${note.id}` : `${API_BASE}/api/notes`;
+            const res = await fetch(url, {
+                method: method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, details }),
             });
@@ -49,10 +51,10 @@ export default function CreateNote({ onNoteSaved }: CreateNoteProps) {
                 <div className="new-note-header"> New Note </div>
                 <div className="new-note-body">    
                         <label htmlFor="title"> Title:</label>
-                        <input ref={titleRef} type="text" id="title" />
+                        <input ref={titleRef} type="text" id="title" value={note.title} />
                         
                         <label htmlFor="details">Details:</label>
-                        <input ref={detailsRef} type="textarea" id="details" />
+                        <input ref={detailsRef} type="textarea" id="details" value={note.details}/>
                 </div>     
                 <div className="new-note-footer">
                     <button onClick={onSave}>Save</button>
