@@ -11,6 +11,7 @@ import { API_SERVER } from '../settings';
 export default function Notes() {
     const [notes, setNotes] = useState<INote[]>([]);
     const [selectedNote, setSelectedNote] = useState<INote>();
+    const [editorOpen, setEditorOpen] = useState(false);
 
     const refreshNotes = () => {
         fetch(`${API_SERVER}/api/notes`)
@@ -28,8 +29,17 @@ export default function Notes() {
         <>
             <div className="notes-container">
                 <section className="notes-list">
-                    <NoteEditor />
-                    <NotesList notes={notes} handleNoteClick={handleNoteClick} onNoteSaved={refreshNotes}/>
+                    <NoteEditor
+                        open={editorOpen}
+                        onClose={() => setEditorOpen(false)}
+                        onNoteSaved={refreshNotes}
+                    />
+                    <NotesList
+                        notes={notes}
+                        handleNoteClick={handleNoteClick}
+                        onNoteSaved={refreshNotes}
+                        onNewNote={() => setEditorOpen(true)}
+                    />
                 </section>
                 <section className="note-details">
                     {selectedNote && <NoteDetails note={selectedNote} />}
