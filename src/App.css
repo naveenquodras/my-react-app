@@ -27,12 +27,13 @@ button {
 
 .main-app {
   display: grid;
+  position: relative;
   grid-template-areas: 
   "header header header"
   "main main main"
   "footer footer footer";
   grid-template-columns: 1fr 4fr 1fr;;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 0.40fr 4fr 1fr;
   align-items: center;
   justify-content: center;
   background-color: var(--main-app-background-color);
@@ -41,12 +42,18 @@ button {
 
   .header {
     grid-area: header;
-    background-color: rgb(5, 139, 95);
+    position:fixed;
+    width: 100%;
+    background-color: rgb(4, 98, 66);
   }
 
   .main {
     grid-area: main;
-    
+    background-color: rgb(4, 130, 88);
+  }
+  .footer {
+    grid-area: footer;
+    background-color: aqua;
   }
 }
 
