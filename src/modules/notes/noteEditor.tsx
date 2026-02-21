@@ -3,7 +3,7 @@ import React from "react";
 import { INote } from "./note";
 import './notes.css';
 
-const API_BASE = 'http://localhost:3001';
+const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
     /** When true, the dialog is shown; when false, it is closed. */
@@ -15,21 +15,23 @@ interface NoteEditorProps {
 
 export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteEditorProps) {
     const [note, setNote] = useState<INote>({id:-1, title:'', details:''});
+    const [isEditorOpen, setIsEditorOpen] = useState(open);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
     const detailsRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (open) {
+        if (isEditorOpen) {
             setNote({ id: -1, title: '', details: '' });
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
         }
-    }, [open]);
+    }, [isEditorOpen]);
 
     function handleClose() {
         dialogRef.current?.close();
+        setIsEditorOpen(false);
         onClose?.();
     }
 
@@ -38,7 +40,7 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteE
         const details = detailsRef.current?.value ?? '';
         try {
             const method = note.id > 0 ? 'PUT' : 'POST';
-            const url = note.id > 0 ? `${API_BASE}/api/notes/${note.id}` : `${API_BASE}/api/notes`;
+            const url = note.id > 0 ? `${SERVER_URL}/api/notes/${note.id}` : `${SERVER_URL}/api/notes`;
             const res = await fetch(url, {
                 method: method,
                 headers: { 'Content-Type': 'application/json' },
@@ -53,20 +55,28 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteE
         }
     }
 
+    const onNewNote = () => {
+        setIsEditorOpen(true);
+    };
+
     return (
         <>
-        {/* <button onClick={onNewNote}>New Note</button> */}
-        <dialog ref={dialogRef} className="new-note-dialog">
+        {!isEditorOpen && <button onClick={onNewNote}>New Note</button>}
+        <dialog ref={dialogRef} className="new-note-dialog" onClose={handleClose}>
             <div className="new-note-content">
-                <div className="new-note-header"> New Note </div>
-                <div className="new-note-body">    
-                        <label htmlFor="title"> Title:</label>
-                        <input ref={titleRef} type="text" id="title" value={note.title} />
-                        
-                        <label htmlFor="details">Details:</label>
-                        <input ref={detailsRef} type="textarea" id="details" value={note.details}/>
+                <div className="dialog-header"> <b> New Note </b> </div>
+                <div className="dialog-main">    
+                        <div className="dialog-field">
+                            <label htmlFor="title"> Title:</label>
+                            <input ref={titleRef} type="textarea" id="title" />
+                        </div>
+                        <div className="dialog-field">
+                            <label htmlFor="details">Details:</label>
+                            <input ref={detailsRef} type="textarea" id="details"/>
+                        </div>
+
                 </div>     
-                <div className="new-note-footer">
+                <div className="dialog-footer"> 
                     <button onClick={onSave}>Save</button>
                     <button onClick={handleClose}>Close</button>
                 </div>

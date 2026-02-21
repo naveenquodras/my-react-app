@@ -20,29 +20,3 @@ export function Note({ note, handleNoteClick }:  NoteProps ) {
         </div>
     );
 }
-
-
-/*
- <div class="notes-container">
-    <div class="notes-list-container">
-        <ul class="notes-list">
-            <li class="note">
-                <div>title</div>
-                <div>details</div>
-            </li>
-            <li class="note">
-                <div>title</div>
-                <div>details</div>
-            </li>
-            <li class="note">
-                <div>title</div>
-                <div>details</div>
-            </li>
-        </ul>
-    </div>
-    <div class="notes-details-container"></div>
-    
- </div>
-   
-*/
- 

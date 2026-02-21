@@ -9,9 +9,49 @@
 
 .new-note-content {
     display : grid;
-    grid-template-rows: 20% 55% 25%;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+    grid-template-rows: 1fr 4fr 1fr;
     height: 100%;
 
+}
+
+.dialog-header {
+    background-color: #2f8c4b;
+    grid-area : header;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.dialog-main {
+    background-color: #15ab40;
+    grid-area : main;
+    border-top: 5px solid #207d3c;
+    border-bottom: 5px solid #207d3c;
+    padding: 1rem;
+    
+    .dialog-field {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+
+        input {
+            border: 3px solid 207d3c;
+            border-radius: 0.4rem;
+            height : 20px;
+            
+        }
+    }
+}
+
+.dialog-footer {
+    background-color: #072911;
+    grid-area : footer;
+    display: flex;
+    justify-content: end;
 }
 
 .new-note-header {

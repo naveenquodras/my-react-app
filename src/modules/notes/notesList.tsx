@@ -11,9 +11,6 @@ interface NotesListProps {
 export default function NotesList({ notes, handleNoteClick, onNoteSaved, onNewNote }: NotesListProps) {
     return (
         <>
-            {onNewNote && (
-                <button type="button" onClick={onNewNote}>New Note</button>
-            )}
             <ul>
                 {notes.map((note: INote) => (
                     <li key={note.id}>
