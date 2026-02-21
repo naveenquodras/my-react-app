@@ -18,8 +18,16 @@ function App() {
   return (
     <>
     <div className="main-app">
-      <Menu onMenuSelect={onMenuSelect} />
-      <ActiveModule />
+      <div className="header">
+          <Menu onMenuSelect={onMenuSelect} />
+      </div>
+      <div className="main"> 
+          <ActiveModule />
+      </div>
+      <div className="footer">
+
+      </div>
+
     </div>
 
     </>
