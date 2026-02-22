@@ -28,12 +28,15 @@ export default function Notes() {
     return (
         <>
             <div className="notes-container">
-                <section className="notes-list">
+                <section className="new-note">
                     <NoteEditor
-                        open={editorOpen}
-                        onClose={() => setEditorOpen(false)}
-                        onNoteSaved={refreshNotes}
-                    />
+                            open={editorOpen}
+                            onClose={() => setEditorOpen(false)}
+                            onNoteSaved={refreshNotes}
+                        />
+                </section>
+                <section className="notes-list">
+                    
                     <NotesList
                         notes={notes}
                         handleNoteClick={handleNoteClick}

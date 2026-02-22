@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-    <div className="main-app">
+    <div className="app">
       <div className="header">
           <Menu onMenuSelect={onMenuSelect} />
       </div>
