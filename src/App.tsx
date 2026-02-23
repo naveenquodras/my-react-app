@@ -25,7 +25,7 @@ function App() {
           <ActiveModule />
       </div>
       <div className="footer">
-
+          Copy right reserved.
       </div>
 
     </div>
