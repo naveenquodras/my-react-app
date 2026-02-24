@@ -28,7 +28,7 @@ export default function Notes() {
     return (
         <>
             <div className="notes-container">
-                <section className="new-note">
+                <section className="header">
                     <NoteEditor
                             open={editorOpen}
                             onClose={() => setEditorOpen(false)}

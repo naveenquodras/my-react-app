@@ -2,11 +2,29 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   --app-background-color: #080500b6;
   --app-header-height : 5rem;
+  --menu-home-bg-clr : rgb(93, 10, 10);
+  --menu-notes-bg-clr: rgb(2, 76, 2);
+  --menu-photos-bg-clr: rgb(120, 7, 120);
+  --menu-about-bg-clr: rgb(152, 101, 4);
+  --menu-contact-bg-clr: rgb(148, 148, 8);
   --notes-container-background-color: #c59d60b6;
   --dialog-header-background-color: antiquewhite;
   --dialog-footer-background-color: antiquewhite;
     
 }
+/* 
+Quick Hue Reference (for OKLCH)
+Hue     Color
+----    -----
+0–30    Red / Orange-red
+30–80   Orange / Yellow
+80–145  Yellow-green / Green
+145–200 Green / Cyan
+200–265 Cyan / Blue
+265–315 Blue / Purple
+315–360 Purple / Red
+
+*/
 
 h1,h2,h3,h4,h5 {
   margin : 0;
@@ -39,7 +57,7 @@ button {
   /* justify-content: center;  */
   /* overflow: auto; */
   /* background-color: var(--app-background-color); */
-  min-width: 100%;
+  /* min-width: 100%; */
   height: 98vh;
 
   .header {
@@ -75,11 +93,12 @@ button {
   display: grid;
   /* position: relative; */
   grid-template-columns: 35% 35% 30%;
-  grid-template-rows: 10% 85% 5%;
+  grid-template-rows: 60px 1fr 20px;
   grid-template-areas:
-  "new details details"
+  "header header header"
   "list details details"
   "footer footer footer";
+  /* padding : 50px; */
   width: 100%;
   height: 100%;
   /* background-color: var(--notes-container-background-color); */
@@ -88,9 +107,9 @@ button {
   /* grid-row : 2; */
   /* --new-note-height : 2.8rem; */
 
-  .new-note {
-    grid-area: new;
-    padding : 0 20px 0 10px;
+  .header{
+    grid-area: header;
+    background-color: greenyellow;
     /* position: absolute; */
     /* height : var(--new-note-height); */
     /* top: 0; */
@@ -99,10 +118,11 @@ button {
 
   .notes-list {
     grid-area: list;
+    /* padding : 5px; */
     /* margin-top : 5px; */
     /* position: relative; */
     /* top: var(--new-note-height); */
-    /* height: 100%; */
+    height: inherit;
     overflow: scroll;
   }
 
@@ -110,12 +130,17 @@ button {
     grid-area: details;
     /* grid-column: 2 / span 2; */
     grid-row:  2;
+    padding : 15px;
+    border-left: 5px solid oklch(0.6 0.5 115);
+    color: oklch(0.8 0.9 180);
     overflow: scroll;
   }
 
   .notes-footer {
     grid-area : footer;
-    background-color: bisque;
+    background-color: greenyellow;
+    align-content: center;
+    text-align: center;
   }
 }
 
@@ -129,7 +154,6 @@ ul {
   li {
       padding-bottom : 1rem;
       font-size: small;
-     
   }
   
 }
