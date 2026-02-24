@@ -34,9 +34,10 @@ export default function Notes() {
                             onClose={() => setEditorOpen(false)}
                             onNoteSaved={refreshNotes}
                         />
+                    <hr/>
                 </section>
+                
                 <section className="notes-list">
-                    
                     <NotesList
                         notes={notes}
                         handleNoteClick={handleNoteClick}
@@ -46,6 +47,9 @@ export default function Notes() {
                 </section>
                 <section className="note-details">
                     {selectedNote && <NoteDetails note={selectedNote} />}
+                </section>
+                <section className="notes-footer">
+                    Finish Line.
                 </section>
             </div>
         </>
