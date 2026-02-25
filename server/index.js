@@ -18,7 +18,7 @@ testConnection();
 // Example API endpoint - Get all notes
 app.get('/api/notes', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM notes ORDER BY id');
+    const result = await pool.query('SELECT * FROM notes ORDER BY id desc');
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching notes:', error);
