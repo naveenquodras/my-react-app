@@ -55,7 +55,13 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteE
         }
     }
 
+    const resetFields = () => {
+        if (titleRef.current) titleRef.current.value = "";
+        if (detailsRef.current) detailsRef.current.value = "";
+    };
+
     const onNewNote = () => {
+        resetFields();
         setIsEditorOpen(true);
     };
 
