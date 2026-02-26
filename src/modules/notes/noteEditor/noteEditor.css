@@ -1,6 +1,6 @@
 .new-note-dialog {
     width: 40%;
-    height: 15rem;
+    height: 40rem;
     border: 1px solid #000;
     border-radius: 0.5rem;
     box-sizing: border-box;
@@ -13,7 +13,7 @@
     "header"
     "main"
     "footer";
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 40px 1fr 50px;
     height: 100%;
 
 }
@@ -34,15 +34,27 @@
     border-bottom: 5px solid #207d3c;
     padding: 1rem;
     
-    .dialog-field {
+    .dialog-field{
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: repeat(10, 1fr);
+        gap: 10px;
+        
 
         input {
             border: 3px solid 207d3c;
             border-radius: 0.4rem;
-            height : 20px;
-            
+        }
+
+        input[id="title"]{
+            grid-column : 2;
+            grid-row: 1 / span 2;
+            height : 100%;
+        }
+
+        input[id="details"]{
+            grid-column : 2;
+            grid-row: 3 / span 5;
         }
     }
 }

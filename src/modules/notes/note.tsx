@@ -30,7 +30,8 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
             <div>{note.details}</div>
         </div>
         <button onClick={onEditNote}>Edit</button>
-        <NoteEditor mode="edit"
+        <NoteEditor note={note}
+                    mode="edit"
                     open={isEditorOpen} 
                     onClose={handleEditorClose}
                     onNoteSaved={onNoteSaved} />

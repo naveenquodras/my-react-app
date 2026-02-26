@@ -6,6 +6,7 @@ import './noteEditor.css';
 const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
+    note : INote
     mode : "new" | "edit"
     /** When true, the dialog is shown; when false, it is closed. */
     open?: boolean;
@@ -14,14 +15,19 @@ interface NoteEditorProps {
     onNoteSaved?: () => void;
 }
 
-export default function NoteEditor({ open = false, onClose, onNoteSaved, mode = "new" }: NoteEditorProps) {
-    const [note, setNote] = useState<INote>({id:-1, title:'', details:''});
+export default function NoteEditor({note, open = false, onClose, onNoteSaved, mode = "new" }: NoteEditorProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
     const detailsRef = useRef<HTMLInputElement>(null);
     const resetFields = () => {
         if (titleRef.current) titleRef.current.value = "";
         if (detailsRef.current) detailsRef.current.value = "";
+    };
+    const setFields = () => {
+        if(note && note.id > 0) {
+            if(titleRef.current) titleRef.current.value = note.title;
+            if(detailsRef.current) detailsRef.current.value= note.details;
+        }
     };
     const handleClose = ()=> {
         dialogRef.current?.close();
@@ -32,8 +38,7 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved, mode = 
     };
     useEffect(() => {
         if (open) {
-            setNote({ id: -1, title: '', details: '' });
-            resetFields();
+             isEditMode() ? setFields() : resetFields();
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
@@ -74,8 +79,8 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved, mode = 
                         <div className="dialog-field">
                             <label htmlFor="title"> Title:</label>
                             <input ref={titleRef} type="textarea" id="title" />
-                        </div>
-                        <div className="dialog-field">
+                        
+                        
                             <label htmlFor="details">Details:</label>
                             <input ref={detailsRef} type="textarea" id="details"/>
                         </div>
