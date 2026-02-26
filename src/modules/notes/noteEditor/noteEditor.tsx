@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import React from "react";
-import { INote } from "./note";
-import './notes.css';
+import { INote } from "../note";
+import './noteEditor.css';
 
 const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
+    mode : "new" | "edit"
     /** When true, the dialog is shown; when false, it is closed. */
     open?: boolean;
     /** Called when the dialog should close (Close button or after save). */
@@ -13,34 +14,42 @@ interface NoteEditorProps {
     onNoteSaved?: () => void;
 }
 
-export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteEditorProps) {
+export default function NoteEditor({ open = false, onClose, onNoteSaved, mode = "new" }: NoteEditorProps) {
     const [note, setNote] = useState<INote>({id:-1, title:'', details:''});
-    const [isEditorOpen, setIsEditorOpen] = useState(open);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
     const detailsRef = useRef<HTMLInputElement>(null);
-
+    const resetFields = () => {
+        if (titleRef.current) titleRef.current.value = "";
+        if (detailsRef.current) detailsRef.current.value = "";
+    };
+    const handleClose = ()=> {
+        dialogRef.current?.close();
+        onClose?.();
+    }
+    const isEditMode = ()=>{
+        return mode ==="edit";
+    };
     useEffect(() => {
-        if (isEditorOpen) {
+        if (open) {
             setNote({ id: -1, title: '', details: '' });
+            resetFields();
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
         }
-    }, [isEditorOpen]);
-
-    function handleClose() {
-        dialogRef.current?.close();
-        setIsEditorOpen(false);
-        onClose?.();
-    }
+    }, [open]);
 
     async function onSave() {
         const title = titleRef.current?.value ?? '';
         const details = detailsRef.current?.value ?? '';
         try {
-            const method = note.id > 0 ? 'PUT' : 'POST';
-            const url = note.id > 0 ? `${SERVER_URL}/api/notes/${note.id}` : `${SERVER_URL}/api/notes`;
+            let method = 'POST';
+            let url = `${SERVER_URL}/api/notes`;
+            if (isEditMode()) {
+                method = 'PUT';
+                url = `${SERVER_URL}/api/notes/${note.id}`;
+            }
             const res = await fetch(url, {
                 method: method,
                 headers: { 'Content-Type': 'application/json' },
@@ -55,19 +64,9 @@ export default function NoteEditor({ open = false, onClose, onNoteSaved }: NoteE
         }
     }
 
-    const resetFields = () => {
-        if (titleRef.current) titleRef.current.value = "";
-        if (detailsRef.current) detailsRef.current.value = "";
-    };
-
-    const onNewNote = () => {
-        resetFields();
-        setIsEditorOpen(true);
-    };
 
     return (
         <>
-        {!isEditorOpen && <button onClick={onNewNote}>New Note</button>}
         <dialog ref={dialogRef} className="new-note-dialog" onClose={handleClose}>
             <div className="new-note-content">
                 <div className="dialog-header"> <b> New Note </b> </div>

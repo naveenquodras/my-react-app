@@ -14,9 +14,15 @@ If you are developing a production application, we recommend using TypeScript wi
 #############################
 ## NAVEEN - Database Setup
 #############################
-# How to start PostGres database (local)
-brew services start postgresql@16
 
-#How to check if PostGres databse is running
-brew services list
+#  Start PostGres database (local)  #
+    brew services start postgresql@16
+
+#  Check if PostGres database is running  #
+    brew services list
+
+#  Connect to PostGres from terminal  #
+    plsql postgres
+
+
 

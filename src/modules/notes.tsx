@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import { INote, Note } from './notes/note';
 import NotesList from './notes/notesList';
 import NoteDetails from './notes/noteDetails';
-import NoteEditor from './notes/noteEditor'
-
+import NotesHeader from './notes/notesHeader';
 import { API_SERVER } from '../settings';
 
 
@@ -29,11 +28,7 @@ export default function Notes() {
         <>
             <div className="notes-container">
                 <section className="header">
-                    <NoteEditor
-                            open={editorOpen}
-                            onClose={() => setEditorOpen(false)}
-                            onNoteSaved={refreshNotes}
-                        />
+                    <NotesHeader onNoteSaved={refreshNotes} />
                     <hr/>
                 </section>
                 
@@ -42,7 +37,6 @@ export default function Notes() {
                         notes={notes}
                         handleNoteClick={handleNoteClick}
                         onNoteSaved={refreshNotes}
-                        onNewNote={() => setEditorOpen(true)}
                     />
                 </section>
                 <section className="note-details">
