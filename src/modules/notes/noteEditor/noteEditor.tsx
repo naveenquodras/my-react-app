@@ -17,8 +17,8 @@ interface NoteEditorProps {
 
 export default function NoteEditor({note, open = false, onClose, onNoteSaved, mode = "new" }: NoteEditorProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const titleRef = useRef<HTMLInputElement>(null);
-    const detailsRef = useRef<HTMLInputElement>(null);
+    const titleRef = useRef<HTMLTextAreaElement>(null);
+    const detailsRef = useRef<HTMLTextAreaElement>(null);
     const resetFields = () => {
         if (titleRef.current) titleRef.current.value = "";
         if (detailsRef.current) detailsRef.current.value = "";
@@ -75,16 +75,15 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, mo
         <dialog ref={dialogRef} className="new-note-dialog" onClose={handleClose}>
             <div className="new-note-content">
                 <div className="dialog-header"> <b> New Note </b> </div>
-                <div className="dialog-main">    
-                        <div className="dialog-field">
-                            <label htmlFor="title"> Title:</label>
-                            <input ref={titleRef} type="textarea" id="title" />
-                        
-                        
-                            <label htmlFor="details">Details:</label>
-                            <input ref={detailsRef} type="textarea" id="details"/>
-                        </div>
-
+                <div className="dialog-main dialog-form-fields">    
+                    <div className="form-field-group">
+                        <label htmlFor="title"> Title:</label>
+                        <textarea ref={titleRef} id="title" placeholder="Enter title here" />
+                    </div>
+                    <div className="form-field-group">
+                        <label htmlFor="details">Details:</label> 
+                        <textarea  ref={detailsRef} id="details" placeholder="Enter details here"/>
+                    </div>
                 </div>     
                 <div className="dialog-footer"> 
                     <button onClick={onSave}>Save</button>
