@@ -3,6 +3,8 @@ import React from "react";
 import { INote } from "../note";
 import './noteEditor.css';
 
+import  {Edit2Icon} from 'lucide-react'
+
 const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {

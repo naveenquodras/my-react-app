@@ -24,5 +24,8 @@ If you are developing a production application, we recommend using TypeScript wi
 #  Connect to PostGres from terminal  #
     plsql postgres
 
+#############################
+## NAVEEN - Icons (https://lucide.dev/guide/packages/lucide-react)
+#############################
 
-
+npm install lucide-react
