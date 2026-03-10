@@ -95,6 +95,12 @@ button {
   }
 }
 
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+
 .notes-container {
   display: grid;
   /* position: relative; */
@@ -113,9 +119,9 @@ button {
   /* grid-row : 2; */
   /* --new-note-height : 2.8rem; */
 
-  .header {
+  .note-header {
     grid-area: header;
-    background-color: greenyellow;
+    position: relative;
     /* position: absolute; */
     /* height : var(--new-note-height); */
     /* top: 0; */
@@ -148,6 +154,17 @@ button {
     align-content: center;
     text-align: center;
   }
+}
+
+.edit-note-icon__anchor {
+  anchor-name: --edit-note-icon__anchor;
+}
+
+.edit-note-icon__target {
+  position: absolute;
+  position-anchor: --edit-note-icon__anchor;
+  position-area: inline-end;
+  padding-left: 10px;
 }
 
 ul {

@@ -26,10 +26,9 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
     return (
         <>
         <div className="note" onClick={handleClick}>
-            <img src={editDoc} className="icon" />
             <div className="note-header">
-                <h5> {note.title}</h5>
-                <button onClick={editNote}>Edit</button>
+                <img src={editDoc} className="icon edit-note-icon__target" onClick={editNote}/>
+                <h5> <span className="edit-note-icon__anchor"> {note.title}</span></h5>
             </div>
             <div>{note.details}</div>
         </div>
