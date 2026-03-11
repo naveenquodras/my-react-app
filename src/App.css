@@ -182,16 +182,3 @@ ul {
 }
 
 
-.note {
-  display: flex;
-  flex-direction: column;
-  align-items: top;
-  background-color: lightgray;
-  border-radius: 0.5rem;
-  overflow-y: auto;
-  padding: 1rem;
-
-  h5 {
-    padding-bottom: 1rem;
-  }
-}

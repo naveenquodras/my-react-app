@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import NoteEditor from "./noteEditor/noteEditor";
 import editDoc from "../../assets/editDoc.svg";
+import './note.css';
 
 export interface INote {
     id: number;
@@ -27,8 +28,8 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
         <>
         <div className="note" onClick={handleClick}>
             <div className="note-header">
-                <img src={editDoc} className="icon edit-note-icon__target" onClick={editNote}/>
-                <h5> <span className="edit-note-icon__anchor"> {note.title}</span></h5>
+                <img src={editDoc} className="icon--edit-note" onClick={editNote}/>
+                <h5> <span> {note.title}</span></h5>
             </div>
             <div>{note.details}</div>
         </div>
