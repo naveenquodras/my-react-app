@@ -119,15 +119,7 @@ button {
   /* grid-row : 2; */
   /* --new-note-height : 2.8rem; */
 
-  .note-header {
-    grid-area: header;
-    position: relative;
-    /* position: absolute; */
-    /* height : var(--new-note-height); */
-    /* top: 0; */
-    /* left:0; */
-  }
-
+  
   .notes-list {
     grid-area: list;
     /* padding : 5px; */
