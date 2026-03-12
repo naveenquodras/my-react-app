@@ -5,7 +5,7 @@ import NotesList from './notes/notesList';
 import NoteDetails from './notes/noteDetails';
 import NotesHeader from './notes/notesHeader';
 import { API_SERVER } from '../settings';
-
+import './notes.css';
 
 export default function Notes() {
     const [notes, setNotes] = useState<INote[]>([]);

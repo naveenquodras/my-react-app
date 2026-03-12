@@ -20,6 +20,7 @@
       gap: 5px;
       
       img {
+        cursor: pointer;
         width: 20px;
         height: 20px;
       }
@@ -28,6 +29,7 @@
 
   &:hover .note-header-icons {
     visibility: visible;
+    cursor: pointer;
   }
 }
 
