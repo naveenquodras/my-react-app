@@ -32,17 +32,17 @@ export default function Notes() {
                     <hr/>
                 </section>
                 
-                <section className="notes-list">
+                <section className="list">
                     <NotesList
                         notes={notes}
                         handleNoteClick={handleNoteClick}
                         onNoteSaved={refreshNotes}
                     />
                 </section>
-                <section className="note-details">
+                <section className="details">
                     {selectedNote && <NoteDetails note={selectedNote} />}
                 </section>
-                <section className="notes-footer">
+                <section className="footer">
                     Finish Line.
                 </section>
             </div>

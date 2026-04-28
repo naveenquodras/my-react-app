@@ -3,7 +3,6 @@ import React from "react";
 import { INote } from "../note";
 import './noteEditor.css';
 
-import  {Edit2Icon} from 'lucide-react'
 
 const SERVER_URL = 'http://localhost:3001';
 
@@ -76,18 +75,18 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, mo
         <>
         <dialog ref={dialogRef} className="new-note-dialog" onClose={handleClose}>
             <div className="new-note-content">
-                <div className="dialog-header"> <b> New Note </b> </div>
-                <div className="dialog-main dialog-form-fields">    
-                    <div className="form-field-group">
+                <div className="new-note-header"> <b> New Note </b> </div>
+                <div className="new-note-main new-note-form-fields">    
+                    <div className="new-note-form-field-group">
                         <label htmlFor="title"> Title:</label>
                         <textarea ref={titleRef} id="title" placeholder="Enter title here" />
                     </div>
-                    <div className="form-field-group">
+                    <div className="new-note-form-field-group">
                         <label htmlFor="details">Details:</label> 
                         <textarea  ref={detailsRef} id="details" placeholder="Enter details here"/>
                     </div>
                 </div>     
-                <div className="dialog-footer"> 
+                <div className="new-note-footer"> 
                     <button onClick={onSave}>Save</button>
                     <button onClick={handleClose}>Close</button>
                 </div>

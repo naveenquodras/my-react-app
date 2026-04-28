@@ -1,69 +1,68 @@
 .new-note-dialog {
-    width: 40%;
-    height: 40rem;
+     width: 40%;
+    /*height: 40rem; */
     border: 1px solid #000;
     border-radius: 0.5rem;
     box-sizing: border-box;
     padding: 0;
-}
 
-.new-note-content {
-    display: grid;
-    grid-template-areas:
-        "header"
-        "main"
-        "footer";
-    grid-template-rows: 40px 1fr 50px;
-    height: 100%;
 
-}
-
-.dialog-header {
-    background-color: #2f8c4b;
-    grid-area: header;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.dialog-main {
-    background-color: #15ab40;
-    grid-area: main;
-    border-top: 5px solid #207d3c;
-    border-bottom: 5px solid #207d3c;
-    padding: 1rem;
-
-    
-}
-
-.dialog-form-fields {
-    display: flex;
-    flex-direction: column;
-    gap : 0.5rem;
-
-    .form-field-group {
+    .new-note-content {
         display: grid;
-        grid-template-columns: 60px 1fr;
+        grid-template-areas:
+            "new-note-header"
+            "new-note-main"
+            "new-note-footer";
+        grid-template-rows: 40px 1fr 50px;
+        height: 100%;
+
+    }
+
+    .new-note-header {
+        background-color: #2f8c4b;
+        grid-area: new-note-header;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .new-note-main {
+        background-color: #15ab40;
+        grid-area: new-note-main;
+        border-top: 5px solid #207d3c;
+        border-bottom: 5px solid #207d3c;
+        padding: 1rem;
+    }
+
+    .new-note-form-fields {
+        display: flex;
+        flex-direction: column;
         gap : 0.5rem;
 
-       
-        textarea {
-            border: 3px solid 207d3c;
-            border-radius: 0.4rem;
-            padding: 0.5rem;
-        }
+        .new-note-form-field-group {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap : 0.5rem;
 
-        textarea[id="details"] {
-            min-height: 50vh;
+        
+            textarea {
+                border: 3px solid 207d3c;
+                border-radius: 0.4rem;
+                padding: 0.5rem;
+            }
+
+            textarea[id="details"] {
+                min-height: 50vh;
+            }
         }
     }
-}
 
-.dialog-footer {
-    background-color: #072911;
-    grid-area: footer;
-    display: flex;
-    justify-content: end;
+    .new-note-footer {
+        background-color: #072911;
+        grid-area: new-note-footer;
+        display: flex;
+        justify-content: end;
+    }
 }
 
