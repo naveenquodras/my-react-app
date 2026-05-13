@@ -56,7 +56,7 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
         {isEditingNote && (
             <NoteEditor
                 note={note}
-                mode="edit"
+                context="editNote"
                 open={isEditingNote}
                 onClose={() => setIsEditingNote(false)}
                 onNoteSaved={onNoteSaved}

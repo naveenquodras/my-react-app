@@ -8,7 +8,7 @@ const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
     note : INote
-    mode : "new" | "edit"
+    context : "createNote" | "editNote"
     /** When true, the dialog is shown; when false, it is closed. */
     open?: boolean;
     /** Called when the dialog should close (Close button or after save). */
@@ -16,7 +16,7 @@ interface NoteEditorProps {
     onNoteSaved?: () => void;
 }
 
-export default function NoteEditor({note, open = false, onClose, onNoteSaved, mode = "new" }: NoteEditorProps) {
+export default function NoteEditor({note, open = false, onClose, onNoteSaved, context = "createNote" }: NoteEditorProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleRef = useRef<HTMLTextAreaElement>(null);
     const detailsRef = useRef<HTMLTextAreaElement>(null);
@@ -34,12 +34,12 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, mo
         dialogRef.current?.close();
         onClose?.();
     }
-    const isEditMode = ()=>{
-        return mode ==="edit";
+    const isEditingNote = ()=>{
+        return context ==="editNote";
     };
     useEffect(() => {
         if (open) {
-             isEditMode() ? setFields() : resetFields();
+            isEditingNote() ? setFields() : resetFields();
             dialogRef.current?.showModal();
         } else {
             dialogRef.current?.close();
@@ -52,7 +52,7 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, mo
         try {
             let method = 'POST';
             let url = `${SERVER_URL}/api/notes`;
-            if (isEditMode()) {
+            if (isEditingNote()) {
                 method = 'PUT';
                 url = `${SERVER_URL}/api/notes/${note.id}`;
             }
@@ -73,20 +73,20 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, mo
 
     return (
         <>
-        <dialog ref={dialogRef} className="new-note-dialog" onClose={handleClose}>
-            <div className="new-note-content">
-                <div className="new-note-header"> <b> New Note </b> </div>
-                <div className="new-note-main new-note-form-fields">    
-                    <div className="new-note-form-field-group">
+        <dialog ref={dialogRef} className="note-editor" onClose={handleClose}>
+            <div className="content">
+                <div className="note-editor-header"> <b> New Note </b> </div>
+                <div className="note-editor-main form-fields">    
+                    <div className="form-field-group">
                         <label htmlFor="title"> Title:</label>
                         <textarea ref={titleRef} id="title" placeholder="Enter title here" />
                     </div>
-                    <div className="new-note-form-field-group">
+                    <div className="form-field-group">
                         <label htmlFor="details">Details:</label> 
                         <textarea  ref={detailsRef} id="details" placeholder="Enter details here"/>
                     </div>
                 </div>     
-                <div className="new-note-footer"> 
+                <div className="note-editor-footer"> 
                     <button onClick={onSave}>Save</button>
                     <button onClick={handleClose}>Close</button>
                 </div>
