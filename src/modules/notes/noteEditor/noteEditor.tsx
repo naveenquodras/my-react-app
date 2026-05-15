@@ -75,7 +75,7 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, co
         <>
         <dialog ref={dialogRef} className="note-editor" onClose={handleClose}>
             <div className="content">
-                <div className="note-editor-header"> <b> New Note </b> </div>
+                <div className="note-editor-header"> <b> Add Note </b> </div>
                 <div className="note-editor-main form-fields">    
                     <div className="form-field-group">
                         <label htmlFor="title"> Title:</label>

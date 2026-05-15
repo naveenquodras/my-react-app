@@ -16,7 +16,7 @@ export default function NotesHeader({onNoteSaved} : NotesHeaderProps) {
 
     return (
         <>
-            <button onClick={onNewNote}>New Note</button>
+            <button onClick={onNewNote}>Add Note</button>
             <NoteEditor open={isEditorOpen} context="createNote" onClose={onClose} onNoteSaved={onNoteSaved} />
         </>
     );

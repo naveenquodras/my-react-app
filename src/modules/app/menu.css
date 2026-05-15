@@ -10,6 +10,7 @@
     border-top : 1px solid oklch(0.6 0.5 115);
     border-bottom: 1px solid oklch(0.6 0.5 115);
     min-width: 50%;
+    width: 100%;
 }
 
 .menu-item-link {
