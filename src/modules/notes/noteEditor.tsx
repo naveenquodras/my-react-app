@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import React from "react";
-import { INote } from "../note";
+import { INote } from "./note";
 import './noteEditor.css';
 
 
@@ -74,9 +74,8 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, co
     return (
         <>
         <dialog ref={dialogRef} className="note-editor" onClose={handleClose}>
-            <div className="content">
-                <div className="note-editor-header"> <b> Add Note </b> </div>
-                <div className="note-editor-main form-fields">    
+                <div className="header"> <b> Add Note </b> </div>
+                <div className="main form-fields">    
                     <div className="form-field-group">
                         <label htmlFor="title"> Title:</label>
                         <textarea ref={titleRef} id="title" placeholder="Enter title here" />
@@ -86,11 +85,10 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, co
                         <textarea  ref={detailsRef} id="details" placeholder="Enter details here"/>
                     </div>
                 </div>     
-                <div className="note-editor-footer"> 
+                <div className="footer"> 
                     <button onClick={onSave}>Save</button>
                     <button onClick={handleClose}>Close</button>
                 </div>
-            </div>
         </dialog>
         </>
     );

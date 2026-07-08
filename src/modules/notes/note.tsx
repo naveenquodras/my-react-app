@@ -1,7 +1,7 @@
 /// <reference path="../../svg.d.ts" />
 import React from "react";
 import { useState } from "react";
-import NoteEditor from "./noteEditor/noteEditor";
+import NoteEditor from "./noteEditor";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/delete.svg";
 import './note.css';
@@ -40,18 +40,18 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
     }
     return (
         <>
-        <div className="note-list__note" onClick={handleClick}>
-            <div className="note-list__note-header">
+        <div className="list-item" onClick={handleClick}>
+            <div className="item-header">
                 <h5>{note.title}</h5>
-                <span className="note-list__note-actions">
+                <span className="item-action-buttons">
                     <img src={editIcon} className="icon--edit" onClick={editNote}/>
                     <img src={deleteIcon} className="icon--delete" onClick={deleteNote}/>
-                    <span className="note-list__note-action__tooltip tooltip-edit">Edit</span>
-                    <span className="note-list__note-action__tooltip tooltip-delete">Delete</span>
+                    <span className="tooltip-edit">Edit</span>
+                    <span className="tooltip-delete">Delete</span>
                 </span>
             </div>
            
-            <p>{note.details}</p>
+            <pre>{note.details}</pre>
         </div>
         {isEditingNote && (
             <NoteEditor

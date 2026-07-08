@@ -29,7 +29,6 @@ export default function Notes() {
             <div className="notes-container">
                 <section className="header">
                     <NotesHeader onNoteSaved={refreshNotes} />
-                    <hr/>
                 </section>
                 
                 <section className="list">
@@ -43,7 +42,7 @@ export default function Notes() {
                     {selectedNote && <NoteDetails note={selectedNote} />}
                 </section>
                 <section className="footer">
-                    Finish Line.
+                   
                 </section>
             </div>
         </>

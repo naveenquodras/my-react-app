@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NoteEditor from "./noteEditor/noteEditor";
+import NoteEditor from "./noteEditor";
 
 interface NotesHeaderProps {
     onNoteSaved : ()=> void
@@ -16,8 +16,10 @@ export default function NotesHeader({onNoteSaved} : NotesHeaderProps) {
 
     return (
         <>
+        <div className="header">
             <button onClick={onNewNote}>Add Note</button>
             <NoteEditor open={isEditorOpen} context="createNote" onClose={onClose} onNoteSaved={onNoteSaved} />
+        </div>
         </>
     );
 }

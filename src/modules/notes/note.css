@@ -1,4 +1,4 @@
-.note-list__note {
+.list-item {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,13 +9,13 @@
   padding: 1rem;
 }
 
-.note-list__note-header {
+.item-header {
   display: grid;
   grid-template-columns: 1fr 60px;
   gap: 3px; 
 }
 
-.note-list__note-actions {
+.item-action-buttons {
   /* position: relative; */
   display: flex;
   flex-direction: row;
@@ -30,17 +30,17 @@
   }
 }
 
-.note-list__note:hover .note-list__note-actions {
+.list-item:hover .item-action-buttons {
   visibility: visible;
   cursor: pointer;
 }
 
-.note-list__note-actions .icon--edit {
+.item-action-buttons > .icon--edit {
   anchor-name: --tooltip-edit;
   
 }
 
-.note-list__note-actions .icon--delete {
+.item-action-buttons > .icon--delete {
   anchor-name: --tooltip-delete;
 }
 
@@ -64,11 +64,11 @@
   visibility: hidden;
 }
 
-.note-list__note-actions:has(.icon--edit:hover) .tooltip-edit {
+.item-action-buttons:has(.icon--edit:hover) > .tooltip-edit {
   visibility: visible;
 }
 
-.note-list__note-actions:has(.icon--delete:hover) .tooltip-delete {
+.item-action-buttons:has(.icon--delete:hover) > .tooltip-delete {
   visibility: visible;
 }
 

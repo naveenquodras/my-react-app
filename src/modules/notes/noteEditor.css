@@ -20,7 +20,7 @@
 
     }
 
-    .note-editor-header {
+    .header {
         background-color: #2f8c4b;
         grid-area: header;
         display: flex;
@@ -29,7 +29,7 @@
 
     }
 
-    .note-editor-main {
+    .main {
         background-color: #15ab40;
         grid-area: main;
         border-top: 5px solid #207d3c;
@@ -60,7 +60,7 @@
         }
     }
 
-    .note-editor-footer {
+    .footer {
         background-color: #072911;
         grid-area: footer;
         display: flex;
