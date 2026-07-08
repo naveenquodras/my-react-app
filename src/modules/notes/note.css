@@ -1,77 +1,79 @@
-.list-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: top;
-  background-color: lightgray;
-  border-radius: 0.5rem;
-  overflow-y: auto;
-  padding: 1rem;
-}
+@scope(.note){
 
-.item-header {
-  display: grid;
-  grid-template-columns: 1fr 60px;
-  gap: 3px; 
-}
+  :scope {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    overflow-y: auto;
+    padding: 1rem;
+  }
 
-.item-action-buttons {
-  /* position: relative; */
-  display: flex;
-  flex-direction: row;
-  /* justify-content: flex-end; */
-  visibility: hidden;
-  gap: 5px;
-  
-  img {
+  & > .header {
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    gap: 3px; 
+
+    & > .action-buttons {
+      display: flex;
+      flex-direction: row;
+      visibility: hidden;
+      gap: 5px;
+      
+      img {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+      }
+
+      & > .tooltip-edit {
+        position: absolute;
+        position-anchor: --tooltip-edit;
+        position-area : bottom center;
+        content: 'edit';
+        visibility: hidden;
+        position-try-fallbacks: center center;
+      }
+      
+      & > .tooltip-delete {
+        position: absolute;
+        position-anchor: --tooltip-delete;
+        top: anchor(bottom);
+        left: anchor(left);
+        content: 'delete';
+        visibility: hidden;
+      }
+
+      & > .icon--edit {
+        anchor-name: --tooltip-edit;
+      }
+      
+      & > .icon--delete {
+        anchor-name: --tooltip-delete;
+      }
+
+      &:has(.icon--edit:hover) > .tooltip-edit {
+        visibility: visible;
+      }
+      
+      &:has(.icon--delete:hover) > .tooltip-delete {
+        visibility: visible;
+      }
+    }
+  }
+
+  &:hover .action-buttons {
+    visibility: visible;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+  }
+  
+  & > .details {
+    margin-top: 0.8rem;
+    white-space: pre;
   }
 }
-
-.list-item:hover .item-action-buttons {
-  visibility: visible;
-  cursor: pointer;
-}
-
-.item-action-buttons > .icon--edit {
-  anchor-name: --tooltip-edit;
-  
-}
-
-.item-action-buttons > .icon--delete {
-  anchor-name: --tooltip-delete;
-}
-
-.tooltip-edit {
-  position: absolute;
-  position-anchor: --tooltip-edit;
-  position-area : bottom center;
-  /* top: anchor(bottom);
-  left: anchor(left); */
-  content: 'edit';
-  visibility: hidden;
-  position-try-fallbacks: center center;
-}
-
-.tooltip-delete {
-  position: absolute;
-  position-anchor: --tooltip-delete;
-  top: anchor(bottom);
-  left: anchor(left);
-  content: 'delete';
-  visibility: hidden;
-}
-
-.item-action-buttons:has(.icon--edit:hover) > .tooltip-edit {
-  visibility: visible;
-}
-
-.item-action-buttons:has(.icon--delete:hover) > .tooltip-delete {
-  visibility: visible;
-}
-
 
   
  

@@ -40,10 +40,10 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
     }
     return (
         <>
-        <div className="list-item" onClick={handleClick}>
-            <div className="item-header">
+        <div className="note" onClick={handleClick}>
+            <div className="header">
                 <h5>{note.title}</h5>
-                <span className="item-action-buttons">
+                <span className="action-buttons">
                     <img src={editIcon} className="icon--edit" onClick={editNote}/>
                     <img src={deleteIcon} className="icon--delete" onClick={deleteNote}/>
                     <span className="tooltip-edit">Edit</span>
@@ -51,7 +51,7 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
                 </span>
             </div>
            
-            <pre>{note.details}</pre>
+            <p className="details">{note.details}</p>
         </div>
         {isEditingNote && (
             <NoteEditor
