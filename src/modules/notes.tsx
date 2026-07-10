@@ -27,23 +27,16 @@ export default function Notes() {
     return (
         <>
             <div className="notes-container">
-                <section className="header">
-                    <NotesHeader onNoteSaved={refreshNotes} />
-                </section>
+                <NotesHeader onNoteSaved={refreshNotes} />
                 
-                <section className="list">
-                    <NotesList
-                        notes={notes}
-                        handleNoteClick={handleNoteClick}
-                        onNoteSaved={refreshNotes}
-                    />
-                </section>
-                <section className="details">
-                    {selectedNote && <NoteDetails note={selectedNote} />}
-                </section>
-                <section className="footer">
-                   
-                </section>
+                <NotesList
+                    notes={notes}
+                    handleNoteClick={handleNoteClick}
+                    onNoteSaved={refreshNotes}
+                />
+                
+                {selectedNote && <NoteDetails note={selectedNote} />}
+                
             </div>
         </>
     );

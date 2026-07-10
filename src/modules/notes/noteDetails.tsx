@@ -8,8 +8,10 @@ interface NoteDetailsProps {
 export default function NoteDetails({ note }: NoteDetailsProps) {
     return (
         <>
-            <h3> {note.title}</h3>
-            <p>{note.details}</p>
+            <section className="details">
+                <h3> {note.title}</h3>
+                <p>{note.details}</p>
+            </section>
         </>
     );
 }

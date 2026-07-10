@@ -15,11 +15,10 @@ export default function NotesHeader({onNoteSaved} : NotesHeaderProps) {
     };
 
     return (
-        <>
         <div className="header">
-            <button onClick={onNewNote}>Add Note</button>
+            <span>Notes </span>
+            <a target="blank" href="" className="btn add" onClick={onNewNote}>+</a>
             <NoteEditor open={isEditorOpen} context="createNote" onClose={onClose} onNoteSaved={onNoteSaved} />
         </div>
-        </>
     );
 }

@@ -10,6 +10,7 @@ interface NotesListProps {
 export default function NotesList({ notes, handleNoteClick, onNoteSaved }: NotesListProps) {
     return (
         <>
+        <section className="list">
             <ul>
                 {notes.map((note: INote) => (
                     <li key={note.id}>
@@ -17,6 +18,7 @@ export default function NotesList({ notes, handleNoteClick, onNoteSaved }: Notes
                     </li>
                 ))}
             </ul>
+        </section>
         </>
     );
 }

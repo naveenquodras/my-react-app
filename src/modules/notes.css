@@ -8,7 +8,7 @@
     :scope {
       display: grid;
       grid-template-columns: 35% 35% 30%;
-      grid-template-rows: 60px 1fr 20px;
+      grid-template-rows: 50px 1fr 20px;
       grid-template-areas:
         "header header header"
         "list details details"
@@ -20,13 +20,30 @@
 
     & > .header {
       grid-area: header;
-      border-bottom: 3px solid var(--border-color);
+
+      .btn {
+        border-radius: 5px;
+        width: 10px;
+        height: 10px;
+      }
     }
     
     & > .list {
       grid-area: list;
       height: inherit;
       overflow: scroll;
+
+      ul {
+        padding : 0.5rem;
+
+        li {
+          padding-bottom : 0.5rem; 
+
+          .note {
+            max-height : 80px;
+          }
+        }
+      }
     }
   
     & > .details {
