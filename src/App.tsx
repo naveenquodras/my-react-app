@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Menu from './modules/app/menu';
 import Home from './modules/home';
-import Notes from './modules/notes';
+import Notes from './modules/notes/notes';
 
-const modules = {'home': Home, 'notes': Notes};
+const modules = { home: Home, notes: Notes } as const;
+type ModuleName = keyof typeof modules;
 
 function App() {
-  const [currentModule, setCurrentModule] = useState('home');
-  
+  const [currentModule, setCurrentModule] = useState<ModuleName>('home');
+
   const ActiveModule = modules[currentModule];
 
-  const onMenuSelect = (moduleName) => {
-    setCurrentModule(moduleName);
+  const onMenuSelect = (moduleName: string) => {
+    if (moduleName in modules) {
+      setCurrentModule(moduleName as ModuleName);
+    }
   };
 
   return (

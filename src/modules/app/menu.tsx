@@ -1,13 +1,13 @@
-import React from 'react';
+import type { MouseEvent } from 'react';
 import './menu.css';
 
 interface MenuProps {
-    onMenuSelect: (moduleName) => void
+    onMenuSelect: (moduleName: string) => void
 }
 
 export default function Menu({ onMenuSelect }: MenuProps) {
 
-    const onMenuClick = (e, moduleName) => {
+    const onMenuClick = (e: MouseEvent, moduleName: string) => {
         e.preventDefault();
         onMenuSelect(moduleName);
     };

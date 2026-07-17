@@ -1,5 +1,5 @@
-import React from 'react'
-import { INote, Note } from './note'
+import type { INote } from './note'
+import { Note } from './note'
 
 interface NotesListProps {
     notes : INote[]

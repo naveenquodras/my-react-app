@@ -1,0 +1,60 @@
+/* The circular button container */
+.round-btn {
+    width: 40px;
+    min-width: 30px;
+    height: 40px;
+    background-color: #007bff; /* Vibrant blue */
+    border: none;
+    border-radius: 50%; /* Makes it perfectly round */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Flexbox to perfectly center the plus sign */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Smooth hover transition */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  
+  /* Hover & Active States */
+  .round-btn:hover {
+    background-color: #0056b3; /* Darker blue */
+  }
+  
+  .round-btn:active {
+    transform: scale(0.95); /* Slight click effect */
+  }
+  
+  /* The Plus Sign using CSS Pseudo-elements */
+  .plus-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* The horizontal and vertical bars */
+  .plus-icon::before,
+  .plus-icon::after {
+    content: "";
+    position: absolute;
+    background-color: #ffffff; /* White icon color */
+    border-radius: 2px;
+  }
+  
+  /* Horizontal bar */
+  .plus-icon::before {
+    top: 9px; /* (Total height 20px - Bar height 2px) / 2 */
+    left: 0;
+    width: 20px;
+    height: 2px;
+  }
+  
+  /* Vertical bar */
+  .plus-icon::after {
+    top: 0;
+    left: 9px; /* (Total width 20px - Bar width 2px) / 2 */
+    width: 2px;
+    height: 20px;
+  }

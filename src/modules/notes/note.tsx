@@ -1,5 +1,3 @@
-/// <reference path="../../svg.d.ts" />
-import React from "react";
 import { useState } from "react";
 import NoteEditor from "./noteEditor";
 import editIcon from "../../assets/edit.svg";
@@ -30,8 +28,7 @@ export function Note({ note, handleNoteClick, onNoteSaved }:  NoteProps ) {
         fetch(`${API_SERVER}/api/notes/${note.id}`, {
             method: 'DELETE',
         })
-        .then(response => response.json())
-        .then(data => {
+        .then(() => {
             onNoteSaved();
         })
         .catch(error => {

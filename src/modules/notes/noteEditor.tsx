@@ -1,13 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import React from "react";
-import { INote } from "./note";
+import { useRef, useEffect } from "react";
+import type { INote } from "./note";
 import './noteEditor.css';
 
 
 const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
-    note : INote
+    note?: INote
     context : "createNote" | "editNote"
     /** When true, the dialog is shown; when false, it is closed. */
     open?: boolean;
@@ -52,7 +51,7 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, co
         try {
             let method = 'POST';
             let url = `${SERVER_URL}/api/notes`;
-            if (isEditingNote()) {
+            if (isEditingNote() && note) {
                 method = 'PUT';
                 url = `${SERVER_URL}/api/notes/${note.id}`;
             }

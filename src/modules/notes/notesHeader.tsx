@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import NoteEditor from "./noteEditor";
+import {RoundButton} from "../../components/Buttons/RoundButton";
 
 interface NotesHeaderProps {
     onNoteSaved : ()=> void
@@ -17,7 +18,7 @@ export default function NotesHeader({onNoteSaved} : NotesHeaderProps) {
     return (
         <div className="header">
             <span>Notes </span>
-            <a target="blank" href="" className="btn add" onClick={onNewNote}>+</a>
+            <RoundButton onClick={onNewNote} />
             <NoteEditor open={isEditorOpen} context="createNote" onClose={onClose} onNoteSaved={onNoteSaved} />
         </div>
     );

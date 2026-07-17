@@ -2,15 +2,21 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   --app-background-color: #080500b6;
   --app-header-height: 5rem;
+  --border-color: oklch(0.6 0.5 115/0.5);
+
+
   --menu-home-bg-clr: rgb(93, 10, 10);
   --menu-notes-bg-clr: rgb(2, 76, 2);
   --menu-photos-bg-clr: rgb(120, 7, 120);
   --menu-about-bg-clr: rgb(152, 101, 4);
   --menu-contact-bg-clr: rgb(148, 148, 8);
+
+
   --notes-container-background-color: #c59d60b6;
   --dialog-header-background-color: antiquewhite;
   --dialog-footer-background-color: antiquewhite;
 
+  box-sizing: border-box;
 }
 
 /* 
@@ -61,92 +67,10 @@ button {
   min-width: 5rem;
 }
 
-.app {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "main main main"
-    "footer footer footer";
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 50px 1fr 30px;
-  align-items: center;
-  height: 98vh;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width : 70%;
-  min-width: 600px;
-
-  & > .header {
-    grid-area: header;
-    top : 10px;
-    width: 100%;
-  
-  }
-  
-  & > .main {
-    grid-area: main;
-    /* top : 50px; */
-    /* margin-top: auto; */
-    /* margin-bottom: auto; */
-    height: 100%;
-    min-height: 300px;
-
-  }
-
-  & > .footer {
-    grid-area: footer;
-    width: 100%;
-  }
-}
-
-
-
-/* 
-@scope(.app) {
-
-  :scope {
-      display: grid;
-      position: relative;
-      grid-template-areas:
-        "header header header"
-        "main main main"
-        "footer footer footer";
-      grid-template-columns: 1fr 4fr 1fr;
-      grid-template-rows: 70px 1fr 30px;
-      align-items: center;
-     
-      height: 98vh;
-  }
-
-  .header {
-    grid-area: header;
-    grid-column: 2;
-   
-  }
-
-  .main {
-    grid-area: main;
-   
-    grid-column: 2; 
-    background-color: oklch(0.1 0.1 80);
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .footer {
-    grid-area: footer;
-    background-color: aqua;
-  }
-} */
-
 .icon {
   width: 20px;
   height: 20px;
 }
-
-
 
 ul {
   padding: 1rem;
@@ -161,5 +85,46 @@ ul {
   }
 
 }
+
+.app {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "main main main"
+    "footer footer footer";
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 50px 1fr 30px;
+  height: 97vh;
+  width: 97vw; /* If this property is not set, the add-note-btn will not move properly when the browser is resized */
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 600px;
+
+  & > .header {
+    grid-area: header;
+    width: 98%;
+  }
+  
+  & > .main {
+    grid-area: main;
+    min-height: 300px;
+    margin: 1rem;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  & > .footer {
+    grid-area: footer;
+    width: 100%;
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+
+
+
 
 
