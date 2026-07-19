@@ -1,0 +1,76 @@
+
+@scope(.notes-container) {
+  --text-color: oklch(0.1 0.1 150 / 0.5);
+  --background-color: oklch(0.6 0.5 115/0.1);
+  
+
+    :scope {
+      display: grid;
+      grid-template-columns: 20vw 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+       "sidebar main";
+      width: 100%;
+      height: 90%;
+    }
+    
+    & > .sidebar {
+      grid-area: sidebar;
+      position : relative;
+      border : 1px solid var(--border-color);
+      border-radius : 0.5rem;
+      padding-top: 1rem;
+      margin-top : 1.3rem;
+      min-width : 100px;
+      min-height: 300px;
+
+      & > .title {
+        position : absolute;
+        offset-path: border-box;
+        offset-distance : 2.5rem;
+        font-size : 1.3rem;
+        font-weight : bold;
+      }
+
+      & > .add-note-btn {
+        position : absolute;
+        offset-path : border-box;
+        offset-distance : 18rem;
+      }
+      
+
+      & > .list {
+        height: 94%;
+        overflow: scroll;
+        margin-top: 1rem;
+        margin-bottom: 50rem;
+
+        ul {
+          padding : 0.5rem;
+
+          li {
+            padding-bottom : 0.5rem; 
+
+            .note {
+              max-height : 100px;
+            }
+          }
+        }
+      }
+  }
+
+  & > .main {
+    grid-area: main;
+    height : 90%;
+    overflow : scroll;
+    margin-left: 1rem;
+  
+    & > .details {
+      height: 98%;
+      padding: 15px;
+      color: var(--text-color);
+      overflow: scroll;
+      white-space: pre;
+    }
+  }
+}

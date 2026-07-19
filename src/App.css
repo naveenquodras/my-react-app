@@ -20,8 +20,11 @@
 }
 
 /* 
-       grey->white |          | color  | darker
-oklch (0.1         |  0.2     | 100 /  | 0.2)
+ l = lightness(dark -> light) |          |
+ c = chroma (defines how intense the color is ))
+ h = hue (defines the color itself)
+
+ Example: oklch (0.1 |  0.2 | 100 /  | 0.2)
 
 Quick Hue Reference (for OKLCH)
 Hue     Color

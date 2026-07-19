@@ -1,5 +1,4 @@
-@scope(.note){
-
+@scope(.note) {
   :scope {
     position: relative;
     display: flex;
@@ -8,56 +7,80 @@
     background-color: lightgray;
     border-radius: 0.5rem;
     padding: 1rem;
+    padding-bottom: 1.75rem;
   }
 
-  & > .header {
+  &>.header {
     display: grid;
-    grid-template-columns: 1fr 60px;
-    gap: 3px; 
+    grid-template-columns: 1fr 90px;
+    gap: 3px;
 
-    & > .action-buttons {
+    &>.action-buttons {
       display: flex;
       flex-direction: row;
       visibility: hidden;
       gap: 5px;
-      
+
       img {
         cursor: pointer;
         width: 20px;
         height: 20px;
       }
 
-      & > .tooltip-edit {
-        position: absolute;
-        position-anchor: --tooltip-edit;
-        position-area : bottom center;
-        content: 'edit';
-        visibility: hidden;
-        position-try-fallbacks: center center;
-      }
-      
-      & > .tooltip-delete {
-        position: absolute;
-        position-anchor: --tooltip-delete;
-        top: anchor(bottom);
-        left: anchor(left);
-        content: 'delete';
-        visibility: hidden;
+      &>.file-input {
+        display: none;
       }
 
-      & > .icon--edit {
+      &>.tooltip-edit {
+        position: absolute;
+        position-anchor: --tooltip-edit;
+        position-area: top;
+        content: 'edit';
+        visibility: hidden;
+        position-try-fallbacks: bottom;
+        color: var(--dark-gray);
+      }
+
+      &>.tooltip-upload {
+        position: absolute;
+        position-anchor: --tooltip-upload;
+        position-area: top;
+        visibility: hidden;
+        position-try-fallbacks: bottom;
+        color: var(--dark-gray);
+      }
+
+      &>.tooltip-delete {
+        position: absolute;
+        position-anchor: --tooltip-delete;
+        position-area: top;
+        position-try-fallbacks: bottom;
+        content: 'delete';
+        visibility: hidden;
+        color: var(--dark-gray);
+      }
+
+      &>.icon--edit {
         anchor-name: --tooltip-edit;
       }
-      
-      & > .icon--delete {
+
+      &>.icon--upload {
+        anchor-name: --tooltip-upload;
+      }
+
+      &>.icon--delete {
         anchor-name: --tooltip-delete;
       }
 
-      &:has(.icon--edit:hover) > .tooltip-edit {
+      &:has(.icon--edit:hover)>.tooltip-edit {
         visibility: visible;
       }
-      
-      &:has(.icon--delete:hover) > .tooltip-delete {
+
+      &:has(.icon--upload:hover)>.tooltip-upload {
+        visibility: visible;
+      }
+
+      &:has(.icon--delete:hover)>.tooltip-delete {
         visibility: visible;
       }
     }
@@ -67,13 +90,25 @@
     visibility: visible;
     cursor: pointer;
   }
-  
-  & > .details {
-    /* margin-top: 0.8rem; */
+
+  &>.details {
     white-space: pre;
-    overflow:scroll;
+    overflow: scroll;
+  }
+
+  &>.attachments {
+    position: absolute;
+    bottom: 0.35rem;
+    left: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+
+    &>.attachment-icon {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
   }
 }
-
-  
- 
