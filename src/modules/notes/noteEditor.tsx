@@ -1,9 +1,7 @@
 import { useRef, useEffect } from "react";
 import type { INote } from "./note";
+import { API_SERVER } from "../../settings";
 import './noteEditor.css';
-
-
-const SERVER_URL = 'http://localhost:3001';
 
 interface NoteEditorProps {
     note?: INote
@@ -50,10 +48,10 @@ export default function NoteEditor({note, open = false, onClose, onNoteSaved, co
         const details = detailsRef.current?.value ?? '';
         try {
             let method = 'POST';
-            let url = `${SERVER_URL}/api/notes`;
+            let url = `${API_SERVER}/api/notes`;
             if (isEditingNote() && note) {
                 method = 'PUT';
-                url = `${SERVER_URL}/api/notes/${note.id}`;
+                url = `${API_SERVER}/api/notes/${note.id}`;
             }
             const res = await fetch(url, {
                 method: method,
